@@ -15,7 +15,7 @@ public class ClientContainer {
         profile.setParameter(ProfileImpl.MAIN_HOST,"localhost");
         AgentContainer agentContainer=instance.createAgentContainer(profile);
 
-        String secret="password123";
+        String secret="password12345678";
 
         AgentController agentClient=agentContainer.createNewAgent("client","AES.agents.Client",new Object[]{secret});
         agentClient.start();

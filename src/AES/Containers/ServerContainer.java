@@ -15,7 +15,7 @@ public class ServerContainer {
         profile.setParameter(ProfileImpl.MAIN_HOST,"localhost");
         AgentContainer agentContainer=instance.createAgentContainer(profile);
 
-        String secret="password123";
+        String secret="password12345678";
 
         AgentController agentServer=agentContainer.createNewAgent("server","AES.agents.Server",new Object[]{secret});
         agentServer.start();
