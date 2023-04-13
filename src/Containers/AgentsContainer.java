@@ -12,8 +12,8 @@ public class AgentsContainer {
         ProfileImpl profile=new ProfileImpl();
         profile.setParameter(ProfileImpl.MAIN_HOST,"localhost");
         AgentContainer agentContainer=instance.createAgentContainer(profile);
-        AgentController agentSeller=agentContainer.createNewAgent("seller","ma.enset.sma.agents.SellerAgent",new Object[]{});
-        AgentController agentBuyer=agentContainer.createNewAgent("buyer","ma.enset.sma.agents.BuyerAgent",new Object[]{});
+        AgentController agentSeller=agentContainer.createNewAgent("server","agents.Server",new Object[]{});
+        AgentController agentBuyer=agentContainer.createNewAgent("client","agents.Client",new Object[]{});
         agentSeller.start();
         agentBuyer.start();
 
