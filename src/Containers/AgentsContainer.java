@@ -23,10 +23,10 @@ public class AgentsContainer {
         PrivateKey privateKey = rsaKeys.getPrivate();
         PublicKey publicKey = rsaKeys.getPublic();
 
-        AgentController agentSeller=agentContainer.createNewAgent("server","agents.Server",new Object[]{privateKey});
-        AgentController agentBuyer=agentContainer.createNewAgent("client","agents.Client",new Object[]{publicKey});
-        agentSeller.start();
-        agentBuyer.start();
+        AgentController agentServer=agentContainer.createNewAgent("server","agents.Server",new Object[]{privateKey});
+        AgentController agentClient=agentContainer.createNewAgent("client","agents.Client",new Object[]{publicKey});
+        agentServer.start();
+        agentClient.start();
 
     }
 }
