@@ -8,7 +8,7 @@ import java.util.Base64;
 
 public class GenerateRSAKeys {
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        KeyPair keyPair =CryptoKeysGenerator.generateRSAKeys();
+        KeyPair keyPair = CryptoKeysGenerator.generateRSAKeys();
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
         String encodePk = Base64.getEncoder().encodeToString(privateKey.getEncoded());

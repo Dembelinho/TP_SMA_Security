@@ -1,5 +1,3 @@
-package Containers;
-
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
