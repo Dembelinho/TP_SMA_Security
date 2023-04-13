@@ -1,4 +1,4 @@
-package AES;
+package RSA;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;

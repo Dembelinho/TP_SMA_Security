@@ -1,6 +1,6 @@
 package Containers;
 
-import AES.CryptoKeysGenerator;
+import RSA.CryptoKeysGenerator;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
@@ -12,7 +12,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-public class AgentsContainer {
+public class ServerContainer {
     public static void main(String[] args) throws StaleProxyException, NoSuchAlgorithmException {
         Runtime instance = Runtime.instance();
         ProfileImpl profile=new ProfileImpl();
@@ -24,9 +24,9 @@ public class AgentsContainer {
         PublicKey publicKey = rsaKeys.getPublic();
 
         AgentController agentServer=agentContainer.createNewAgent("server","agents.Server",new Object[]{privateKey});
-        AgentController agentClient=agentContainer.createNewAgent("client","agents.Client",new Object[]{publicKey});
+
         agentServer.start();
-        agentClient.start();
+
 
     }
 }
