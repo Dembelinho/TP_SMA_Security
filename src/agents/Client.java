@@ -6,17 +6,24 @@ import jade.lang.acl.ACLMessage;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
+import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Arrays;
 import java.util.Base64;
 
 public class Client extends Agent {
     @Override
     protected void setup() {
-        PublicKey publicKey= (PublicKey) getArguments()[0];
-        String msg=" Voici le msg qu'on veut crypter";
+        //PublicKey publicKey= (PublicKey) getArguments()[0];
+        String encodedPbk= (String) getArguments()[0];
+        String msg= "Voici le msg qu'on veut crypter";
         try {
+            byte[] decodedPbk = Base64.getDecoder().decode(encodedPbk);
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+            PublicKey publicKey = keyFactory.generatePublic(new X509EncodedKeySpec(decodedPbk));
+
             Cipher cipher = Cipher.getInstance("RSA");
             cipher.init(Cipher.ENCRYPT_MODE,publicKey);
             byte[] cryptedMsg = cipher.doFinal(msg.getBytes());
