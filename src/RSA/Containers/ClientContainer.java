@@ -20,9 +20,12 @@ public class ClientContainer {
         PublicKey publicKey = rsaKeys.getPublic();
 
  */
+        // Clé publique encodée en base64
         String encodePbk="MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMG0SGjBNGN5JNpOO/81KCfRtrbxZGQgD0FSjWm3CTk5eXQenhlEuqDdmhZTZsU/7mrJod8AyYGkPv4Ulsv3ns8CAwEAAQ==";
 
         //AgentController agentClient=agentContainer.createNewAgent("client","RSA.agents.Client",new Object[]{publicKey});
+
+        // Création d'un nouvel agent avec la clé publique encodée en base64 passé comme argument
         AgentController agentClient=agentContainer.createNewAgent("client","RSA.agents.Client",new Object[]{encodePbk});
         agentClient.start();
 

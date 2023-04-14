@@ -16,15 +16,23 @@ import java.util.Base64;
 public class Client extends Agent {
     @Override
     protected void setup() {
+        // Récupération de l'argument passé lors du lancement de l'agent
         String secret= (String) getArguments()[0];
+
         String msg= "Voici le msg qu'on veut crypter";
         try {
+            // Création d'une clé secrète pour le chiffrement AES
             SecretKey secretKey= new SecretKeySpec(secret.getBytes(),"AES");
 
+            // Initialisation du chiffrement AES en mode chiffrement avec la clé secrète
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE,secretKey);
+
+            // Chiffrement du message
             byte[] cryptedMsg = cipher.doFinal(msg.getBytes());
-            String encodedMsg = Base64.getEncoder().encodeToString(cryptedMsg);
+            String encodedMsg = Base64.getEncoder().encodeToString(cryptedMsg);// Encodage du message chiffré en base64
+
+            // Création d'un ACLmessage  pour informer l'agent "Server"
             ACLMessage aclMessage=new ACLMessage(ACLMessage.INFORM);
             aclMessage.addReceiver(new AID("server",AID.ISLOCALNAME));
             aclMessage.setContent(encodedMsg);

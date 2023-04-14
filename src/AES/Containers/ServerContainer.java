@@ -9,17 +9,16 @@ import jade.wrapper.StaleProxyException;
 import java.security.NoSuchAlgorithmException;
 
 public class ServerContainer {
-    public static void main(String[] args) throws StaleProxyException, NoSuchAlgorithmException {
+    public static void main(String[] args) throws StaleProxyException {
         Runtime instance = Runtime.instance();
         ProfileImpl profile=new ProfileImpl();
         profile.setParameter(ProfileImpl.MAIN_HOST,"localhost");
         AgentContainer agentContainer=instance.createAgentContainer(profile);
 
-        String secret="password12345678";
+        String secret="password12345678"; // Clé secrète qui sera passer en argument
 
         AgentController agentServer=agentContainer.createNewAgent("server","AES.agents.Server",new Object[]{secret});
         agentServer.start();
-
 
     }
 }

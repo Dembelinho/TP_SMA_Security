@@ -20,6 +20,7 @@ public class ServerContainer {
         PublicKey publicKey = rsaKeys.getPublic();
 
  */
+        // Clé privée encodée en base64
         String encodedPvk="MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAwbR" +
                 "IaME0Y3kk2k47/zUoJ9G2tvFkZCAPQVKNabcJOTl5dB6eGUS6oN2aFlNmxT/u" +
                 "asmh3wDJgaQ+/hSWy/eezwIDAQABAkEApNGV2yyqOwnVhbuT6W99n4QeCEQVu+" +
@@ -30,9 +31,10 @@ public class ServerContainer {
                 "uOvvYGN7xpYU81AzgE=";
 
         //AgentController agentServer=agentContainer.createNewAgent("server","RSA.agents.Server",new Object[]{privateKey});
+
+        // Création d'un agent "Server" avec la clé privée encodée en base64 passé comme argument
         AgentController agentServer=agentContainer.createNewAgent("server","RSA.agents.Server",new Object[]{encodedPvk});
         agentServer.start();
-
 
     }
 }
